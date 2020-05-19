@@ -1,5 +1,8 @@
-import urllib.request
 import json
+from unittest.mock import patch
+import pytest
+import urllib.request
+import io
 
 
 API_URL = 'http://worldclockapi.com/api/json/utc/now'
@@ -13,9 +16,10 @@ DMY_SEP_INDEX = 5
 DMY_YEAR_SLICE = slice(DMY_SEP_INDEX + 1, DMY_SEP_INDEX + 5)
 
 
-def what_is_year_now() -> int:
+def what_is_year_now():
     """
-    Получает текущее время из API-worldclock и извлекает из поля 'currentDateTime' год
+    Получает текущее время из API-worldclock и
+    извлекает из поля 'currentDateTime' год
 
     Предположим, что currentDateTime может быть в двух форматах:
       * YYYY-MM-DD - 2019-03-01
@@ -35,9 +39,28 @@ def what_is_year_now() -> int:
     return int(year_str)
 
 
+def test_format_ymd():
+    with patch.object(urllib.request, "urlopen", return_value=io.StringIO(
+            '{"currentDateTime": "2020-06-21"}')):
+        assert what_is_year_now() == 2020
+
+
+def test_format_dmy():
+    with patch.object(urllib.request, "urlopen", return_value=io.StringIO(
+            '{"currentDateTime": "21.06.2020"}')):
+        assert what_is_year_now() == 2020
+
+
+def test_format_err():
+    with patch.object(urllib.request, "urlopen", return_value=io.StringIO(
+            '{"currentDateTime": "21-06-2020"}')):
+        with pytest.raises(ValueError):
+            what_is_year_now()
+
+
 if __name__ == '__main__':
     year = what_is_year_now()
-    exp_year = 2019
+    exp_year = 2020
 
     print(year)
     assert year == exp_year

@@ -1,7 +1,8 @@
 from typing import List, Tuple
+import pytest
 
 
-def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
+def fit_transform(*args):
     """
     fit_transform(iterable)
     fit_transform(arg1, arg2, *args)
@@ -17,11 +18,37 @@ def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
     transformed_rows = []
 
     for cat in categories:
-        bin_view_cat = (int(b) for b in bin_format.format(1 << len(seen_categories)))
+        bin_view_cat = (int(b)
+                        for b in bin_format.format(1 << len(seen_categories)))
         seen_categories.setdefault(cat, list(bin_view_cat))
         transformed_rows.append((cat, seen_categories[cat]))
 
     return transformed_rows
+
+
+def test_pytest_equal():
+    assert fit_transform(['Moscow', 'New York', 'Moscow', 'London']) == [
+        ('Moscow', [0, 0, 1]),
+        ('New York', [0, 1, 0]),
+        ('Moscow', [0, 0, 1]),
+        ('London', [1, 0, 0]),
+    ]
+
+
+def test_pytest_empty():
+    assert list(fit_transform('')) == [('', [1])]
+
+
+def test_pytest_notin():
+    assert fit_transform(['New York', 'Moscow']) not in [
+        ('Moscow', [0, 1]),
+        ('New York', [1, 0]),
+    ]
+
+
+def test_pytest_exception():
+    with pytest.raises(TypeError):
+        fit_transform()
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@
 Дана функция, кодирующая строку в соответсвии с таблицей азбуки Морзе
 
 ```python
-# полный код в файле morse.py
+# полный код в файле i1_morse.py
 def encode(message: str) -> str:
     """
     Кодирует строку в соответсвии с таблицей азбуки Морзе
@@ -20,7 +20,7 @@ def encode(message: str) -> str:
 * используется директива
 * используется флаг
 * тест с message = 'SOS'
-* тест с исклечением (Exception)
+* тест с исключением (Exception)
 * файл README.md с описанием шагов для запуска
 * файл result с командами и результатами запуска
 * файл *.py с функцией и доктестами
@@ -30,7 +30,7 @@ def encode(message: str) -> str:
 Дана функция, декодирующая строку из азбуки Морзе в английский
 
 ```python
-# полный код в файле morse.py
+# полный код в файле i2_morse.py
 def decode(morse_message: str) -> str:
     """
     Декодирует строку из азбуки Морзе в английский
@@ -53,10 +53,10 @@ def decode(morse_message: str) -> str:
 
 ## issue-03
 Дана функция, кодирующая значение в бинарное представление на основе порядкового номера первого встречаемго элемента\
-Подробнее про `One Hot Encoding` можно почтитать тут - [How to One Hot Encode Sequence Data in Python](https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/)
+Подробнее про `One Hot Encoding` можно почитать тут - [How to One Hot Encode Sequence Data in Python](https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/)
 
 ```python
-# полный код в файле one_hot_encoder.py
+# полный код в файле i3_one_hot_encoder.py
 def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
     """
     fit_transform(iterable)
@@ -96,7 +96,7 @@ def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
 Подробнее про `One Hot Encoding` можно почтитать тут - [How to One Hot Encode Sequence Data in Python](https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/)
 
 ```python
-# полный код в файле one_hot_encoder.py
+# полный код в файле i4_one_hot_encoder.py
 def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
     """
     fit_transform(iterable)
@@ -134,7 +134,7 @@ def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
 Дана функция, возвращающая текущий год. Дату и время получаем из API-worldclock
 
 ```python
-# полный код в файле what_is_year_now.py
+# полный код в файле i5_what_is_year_now.py
 def what_is_year_now() -> int:
     """
     Получает текущее время из API-worldclock и извлекает из поля 'currentDateTime' год
@@ -159,8 +159,8 @@ def what_is_year_now() -> int:
 
 Напишите на неё тесты, проверяющие все сценарии работы
 
-**DoD (Definition of Done) - критерии, позволяющие понять, что задача сделана, как ожидается**и:
-* добейтесь 100% покртыия кода тестами
+**DoD (Definition of Done) - критерии, позволяющие понять, что задача сделана, как ожидается**:
+* добейтесь 100% покрытия кода тестами
 * используйте unittest.mock для замены реального обращения к API
 * предоставьте отчет о покрытии в виде директории с html файлами
 * файл README.md с описанием шагов для запуска

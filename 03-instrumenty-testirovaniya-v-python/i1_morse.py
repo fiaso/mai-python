@@ -1,4 +1,5 @@
 """Morse Code Translator"""
+import doctest
 
 LETTER_TO_MORSE = {
     'A': '.-', 'B': '-...', 'C': '-.-.',
@@ -18,15 +19,22 @@ LETTER_TO_MORSE = {
     ' ': ' '
 }
 
-MORSE_TO_LETTER = {
-    morse: letter
-    for letter, morse in LETTER_TO_MORSE.items()
-}
 
-
-def encode(message: str) -> str:
+def encode(message):
     """
     Кодирует строку в соответсвие с таблицей азбуки Морзе
+    >>> encode('MAI-PYTHON-2020') # doctest: +SKIP
+    '-- .- .. -....-
+    .--. -.-- - .... --- -. -....-
+    ..--- ----- ..--- -----'
+    >>> encode('SOS')
+    '...
+    ---
+    ...'
+    >>> encode('МАИ-ПИТОН-2020') # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    ...
+    KeyError: 'М'
     """
     encoded_signs = [
         LETTER_TO_MORSE[letter] for letter in message
@@ -35,19 +43,5 @@ def encode(message: str) -> str:
     return ' '.join(encoded_signs)
 
 
-def decode(morse_message: str) -> str:
-    """
-    Декодирует строку из азбуки Морзе в английский
-    """
-    decoded_letters = [
-        MORSE_TO_LETTER[letter] for letter in morse_message.split()
-    ]
-
-    return ''.join(decoded_letters)
-
-
 if __name__ == '__main__':
-    morse_msg = '-- .- .. -....- .--. -.-- - .... --- -. -....- ..--- ----- .---- ----.'
-    decoded_msg = decode(morse_msg)
-    print(decoded_msg)
-    assert morse_msg == encode(decoded_msg)
+    doctest.testmod()
