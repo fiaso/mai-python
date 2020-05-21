@@ -1,5 +1,5 @@
-##Results
-###Issue-1
+## Results
+### Issue-1
 `python3 -m doctest -v -o NORMALIZE_WHITESPACE i1_morse.py`
 
 ```commandline
@@ -27,7 +27,7 @@ ok
 Test passed.
 ```
 
-###Issue-2
+### Issue-2
 `python3 -m pytest -v i2_morse.py` 
 
 ```commandline
@@ -44,7 +44,7 @@ morse.py::test_decode[.--. .- .-. .. ...-PARIS] PASSED                          
 =============================================================================================== 3 passed in 0.02s ================================================================================================
 ```
 
-###Issue-3
+### Issue-3
 `python3 -m unittest -v i3_one_hot_encoder.py`
 
 ```commandline
@@ -58,7 +58,7 @@ Ran 4 tests in 0.001s
 
 OK
 ```
-###Issue-4
+### Issue-4
 `python3 -m pytest -v i4_one_hot_encoder.py `
 
 ```commandline
@@ -76,7 +76,7 @@ one_hot_encoder.py::test_pytest_exception PASSED                                
 ======================================================================================== 4 passed, 4 deselected in 0.03s =========================================================================================
 ```
 
-###Issue-5
+### Issue-5
 `python3 -m pytest -v i5_what_is_year_now.py`
 
 ```commandline
